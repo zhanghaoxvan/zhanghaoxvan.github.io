@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>endl那些不为人知的故事</title>
+    <link rel="icon" href=".\logo.ico" type="image/ico">
+</head>
+
+<body>
+    <h1 id="endl那些不为人知的故事">endl那些不为人知的故事</h1>
+    <p>我一直是用
+        <code>Visual Studio 2022</code>编辑C/C++代码。众所周知，VS的函数会标上黄色。
+    </p>
+    <p>有一天，我输入那熟悉的
+        <code>cout &lt;&lt; endl;</code>时，发现那不被注意的
+        <code>endl</code>标上了黄色。
+    </p>
+    <p>于是，我点进去了
+        <code>ostream</code>……
+    </p>
+    <p>
+        <code>endl</code>源码如下（占据
+        <code>ostream</code>的1009 ~ 1015行）：
+    </p>
+    <pre>
+	<code class="language-C++">
+_EXPORT_STD template &lt;class _Elem, class _Traits&gt;
+basic_ostream&lt;_Elem, _Traits&gt;&amp; __CLRCALL_OR_CDECL endl(
+    basic_ostream&lt;_Elem, _Traits&gt;&amp; _Ostr) { // insert newline and flush stream
+    _Ostr.put(_Ostr.widen(&#39;\n&#39;));
+    _Ostr.flush();
+    return _Ostr;
+}
+</code>
+</pre>
+    <p>我们可以发现，
+        <code>endl</code>是一个函数，传进了一个
+        <code>ostream &amp;</code>类型的参数，为了连续，返回了一个
+        <code>ostream &amp;</code>的值。
+    </p>
+    <p>所以，以下代码是合法的：</p>
+    <pre>
+	<code class="language-C++">
+endl(cout);
+    </code>
+</pre>
+    <p>相当于：</p>
+    <pre>
+	<code class="language-C++">
+cout &lt;&lt; endl;
+    </code>
+</pre>
+    <p>我们是不是也可以制作一个？答案是肯定的。以下是我自己写的
+        <code>space</code>函数，用来输出一个空格：
+    </p>
+    <pre>
+	<code class="language-C++">
+ostream &amp;space(ostream &amp;os) {
+    os.put(&#39; &#39;);
+    return os;
+}
+</code>
+</pre>
+    <p>那么，以下代码是合法的：</p>
+    <pre>
+	<code class="language-C++">
+#include &lt;iostream&gt;
+using namespace std;
+ostream &amp;space(ostream &amp;os) {
+    os.put(&#39; &#39;);
+    return os;
+}
+int main() {
+    cout &lt;&lt; &quot;This is a Space:&quot; &lt;&lt; space &lt;&lt; &quot;:ecapS a si sihT&quot;;
+    return 0;
+}
+</code>
+</pre>
+    <p>它输出了以下结果：</p>
+    <pre>
+	<code>
+This is a Space: :ecapS a si sihT
+D:\Visual Studio 2022\Homework\x64\Debug\Homework.exe (进程 16848)已退出，代码为 0。
+按任意键关闭此窗口. . .
+</code>
+</pre>
+
+</body>
+
+</html>
