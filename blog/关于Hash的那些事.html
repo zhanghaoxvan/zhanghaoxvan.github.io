@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>关于Hash的那些事</title>
+        <link rel="icon" href=".\logo.ico" type="image/ico">
+    </head>
+    <body>
+        <h1 id="关于Hash的那些事">关于Hash的那些事</h1>
+        <p>
+            <code>Hash</code>
+            是一个很特殊的东西。
+        </p>
+        <p>
+            他有以下几点：
+            <ul>
+                <li>
+                    不同数据生成的
+                    <code>Hash</code>
+                    是一样长的
+                </li>
+                <li>
+                    即使是数据之间的差距十分微小，生成的
+                    <code>Hash</code>
+                    也会完全不同
+                </li>
+                <li>
+                    即使是数据完全不同，生成的
+                    <code>Hash</code>
+                    值也可能会相同。这叫“
+                    <code>Hash</code>
+                    冲突”
+                </li>
+            </ul>
+        </p>
+        <p>C++有没有提供一种工具，用来生成Hash值么？当然有。</p>
+        <p>
+            <code>C++ 11</code>
+            提供了一种
+            <code>std::hash</code>
+            类，包含在
+            <code>&lt;functional&gt;</code>
+            头文件里用来生成
+            <code>Hash</code>
+            值。具体可以这么写：
+        </p>
+        <pre>
+            <code class="language-C++">
+std::hash&lt;int&gt; h;
+std::cout &lt;&lt; h(1);
+            </code>
+        </pre>
+        <p>
+            我们可以自己制作一个函数，用来生成Hash值么？当然可以。以下是我写的
+            <code>buildhash</code>
+            函数，用来生成一个
+            <code>Hash</code>
+            值：
+        </p>
+        <pre>
+            <code class="language-C++">
+#include &lt;iostream&gt;
+#include &lt;functional&gt;
+using namespace std;
+template &lt;class type&gt; size_t buildhash(type key) {
+    hash&lt;type&gt; h;
+    return h(key);
+}
+int main() {
+    cout &lt;&lt; buildhash(114514);
+    return 0;
+}
+            </code>
+        </pre>
+        <p>在我的电脑上运行结果是：</p>
+        <pre>
+            <code class="language-C++">
+7762462124815608919
+D:\Visual Studio 2022\Homework\x64\Debug\Homework.exe (进程 15252)已退出，代码为 0。
+按任意键关闭此窗口. . .
+            </code>
+        </pre>
+    </body>
+</html>
