@@ -18,7 +18,7 @@ basic_ostream<_Elem, _Traits>& __CLRCALL_OR_CDECL endl(
 }
 ```
 
-我们可以发现， `endl` 是一个函数，传进了一个 `ostream &` 类型的参数，为了连续，返回了一个 `ostream &` 的值。
+我们可以发现， `endl` 是一个函数，传进了一个 `ostream&` 类型的参数，为了连续，返回了一个 `ostream&` 的值。
 
 所以，以下代码是合法的：
 
@@ -35,7 +35,7 @@ cout << endl;
 我们是不是也可以制作一个？答案是肯定的。以下是我自己写的 `space` 函数，用来输出一个空格：
 
 ```C++
-ostream &space(ostream &os) {
+ostream& space(ostream& os) {
     os.put(' ');
     return os;
 }      
@@ -46,7 +46,7 @@ ostream &space(ostream &os) {
 ```C++
 #include <iostream>
 using namespace std;
-ostream &space(ostream &os) {
+ostream& space(ostream& os) {
     os.put(' ');
     return os;
 }
