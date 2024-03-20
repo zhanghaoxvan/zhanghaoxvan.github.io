@@ -5,6 +5,6 @@ $This$ $is$ $zhanghaoxvan's$ $Space$
 [This is My Bilibili User](https://space.bilibili.com/1002013815)
 [This is My Zhihu User](https://www.zhihu.com/people/ul9ldb)
 [This is My GitHub User](https://github.com/zhanghaoxvan)
-[Download Station](.\download\index.html)
-[Blog](.\blog\index.html)
+[Download Station](.\download.html)
+[Blog](.\blog.html)
 [About...](.\about.html)
