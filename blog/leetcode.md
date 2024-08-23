@@ -1,4 +1,4 @@
-<img src="D:\HTML\Web\logo.jpg" alt="zhanghaoxvan" style="zoom:33%;" />
+<img src=".\logo.jpg" alt="zhanghaoxvan" style="zoom:33%;" />
 
 $Welcome$ $to$ $zhanghaoxvan's$ $LeetCode$ $Solution$
 
