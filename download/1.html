@@ -8,6 +8,78 @@
     <link rel="stylesheet" href="/css/all.min.css">
     <!-- highlight.js 样式 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        /* 仅添加必要的下载按钮样式，不改变主站布局 */
+        .download-wrapper {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .download-btn:hover {
+            background: #0056b3;
+        }
+        .platform-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown-content .icon {
+            font-size: 1.2rem;
+        }
+        .dropdown-content .info {
+            flex: 1;
+        }
+        .dropdown-content .info .platform {
+            font-weight: 500;
+        }
+        .dropdown-content .info .format {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .show {
+            display: block;
+        }
+        .download-hint {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,13 +101,45 @@
             </div>
             
             <div class="post-content">
-                <h1>图片展示</h1>
-                <img src="https://img.picui.cn/free/2025/07/07/686bcff3819e6.png" alt="1751895993249.png" title="1751895993249.png" />
-                <br>
-                <img src="https://img.picui.cn/free/2025/07/07/686bcff3ec592.png" alt="1751895998846.png" title="1751895998846.png" />
-                <br>
-                <a href="https://zhanghaoxvan.lanzouo.com/b0138z0dkh" class="read-more">下载 →</a>
+                <h1>安装</h1>
+                
+                <!-- 下载按钮区域 -->
+                <div class="download-wrapper">
+                    <div class="platform-dropdown">
+                        <button class="download-btn" id="downloadButton">
+                            <i class="fas fa-download"></i>
+                            <span>选择平台下载</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="platformDropdown">
+                            <a href="https://zhanghaoxvan.lanzouo.com/ilIqi30vyc3e" target="_blank">
+                                <i class="fab fa-windows icon" style="color: #0078d7;"></i>
+                                <div class="info">
+                                    <div class="platform">Windows</div>
+                                    <div class="format">.exe 安装文件（密码：ecbj）</div>
+                                </div>
+                            </a>
+                            <a href="https://zhanghaoxvan.lanzouo.com/iQ5bh30vyc4f" target="_blank">
+                                <i class="fab fa-linux icon" style="color: #fcc624;"></i>
+                                <div class="info">
+                                    <div class="platform">Linux</div>
+                                    <div class="format">.deb 安装包（密码：b0c9）/div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="download-hint">
+                        <p>所有平台版本均包含相同功能，选择与您操作系统匹配的版本</p>
+                    </div>
+                </div>
+                
+                <p>通用下载链接：<a href="https://zhanghaoxvan.lanzouo.com/b0138z0dkh" class="read-more">点击下载→</a></p>
                 <p>密码：<code>bgrg</code></p>
+                
+                <h2 style="margin-top: 2rem;">使用说明</h2>
+                <p>1. 下载对应平台的安装包</p>
+                <p>2. 按照安装向导完成安装</p>
+                <p>3. 启动程序后，可通过菜单栏打开文件或直接拖放文件到窗口</p>
             </div>
             
             <!-- <div class="post-navigation">
@@ -62,5 +166,23 @@
     <!-- highlight.js 脚本 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+        // 下载下拉菜单功能
+        const downloadButton = document.getElementById('downloadButton');
+        const platformDropdown = document.getElementById('platformDropdown');
+        
+        downloadButton.addEventListener('click', function() {
+            platformDropdown.classList.toggle('show');
+        });
+        
+        // 点击其他区域关闭下拉菜单
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.download-btn') && !event.target.closest('.platform-dropdown')) {
+                if (platformDropdown.classList.contains('show')) {
+                    platformDropdown.classList.remove('show');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
