@@ -91,23 +91,5 @@
     <!-- highlight.js 脚本 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="/js/main.js"></script>
-    <script>
-        // 下载下拉菜单功能
-        const downloadButton = document.getElementById('downloadButton');
-        const platformDropdown = document.getElementById('platformDropdown');
-        
-        downloadButton.addEventListener('click', function() {
-            platformDropdown.classList.toggle('show');
-        });
-        
-        // 点击其他区域关闭下拉菜单
-        window.addEventListener('click', function(event) {
-            if (!event.target.matches('.download-btn') && !event.target.closest('.platform-dropdown')) {
-                if (platformDropdown.classList.contains('show')) {
-                    platformDropdown.classList.remove('show');
-                }
-            }
-        });
-    </script>
 </body>
 </html>
