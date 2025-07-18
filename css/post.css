@@ -227,97 +227,31 @@ footer {
     font-weight: 500;
     transition: var(--transition);
 }
-/* 代码块样式增强 */
-pre {
-    background: #282c34;
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 25px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: all 0.3s ease;
+
+.code-block {
+  position: relative;
+  padding: 1.5em;
+  background: #282c34;
+  border-radius: 6px;
+  overflow: auto;
 }
 
-pre:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+.lang-name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.3em 0.8em;
+  background: #4caf50;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 0 0 0 6px;
+  z-index: 1;
 }
 
-code {
-    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-    font-size: 0.95em;
-    line-height: 1.6;
-}
-
-/* 代码语言标识 */
-pre::before {
-    content: attr(data-language);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 3px 10px;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 0 8px 0 8px;
-}
-
-/* 代码复制按钮 */
-.copy-code-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 4px 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    opacity: 0;
-    z-index: 1;
-}
-
-pre:hover .copy-code-btn {
-    opacity: 1;
-}
-
-.copy-code-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.copy-code-btn.copied {
-    background: #2ecc71;
-    color: white;
-}
-
-/* 行号样式 */
-pre .line-numbers {
-    display: inline-block;
-    width: 2.5em;
-    user-select: none;
-    text-align: right;
-    opacity: 0.5;
-    padding-right: 1em;
-    margin-right: 1em;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    pre {
-        padding: 15px;
-    }
-    
-    code {
-        font-size: 0.9em;
-    }
-    
-    pre::before {
-        font-size: 0.7rem;
-        padding: 2px 8px;
-    }
+.code-block code {
+  color: #abb2bf;
+  font-family: "JetBrainsMono NF""Fira Code", monospace;
 }
 .download-wrapper {
     margin: 2rem 0;
