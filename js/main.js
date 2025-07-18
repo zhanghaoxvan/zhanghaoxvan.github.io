@@ -1,7 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化代码高亮
     if (typeof hljs !== 'undefined') {
-        hljs.highlightAll();
+        hljs.highlightAll().then(() => {
+            document.querySelectorAll('.code-block').forEach(block => {
+                const codeEl = block.querySelector('code');
+                const langClass = Array.from(codeEl.classList).find(c => c.startsWith('language-'));
+                if (langClass) {
+                    const langName = langClass.replace('language-', '').toUpperCase();
+                    const langLabel = document.createElement('span');
+                    langLabel.className = 'lang-name';
+                    langLabel.textContent = langName;
+                    block.appendChild(langLabel);
+                }
+            });
+        });
     }
 
     // 代码块复制功能
