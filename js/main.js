@@ -16,26 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 代码块复制功能
-    document.querySelectorAll('pre').forEach(pre => {
-        const copyBtn = document.createElement('button');
-        copyBtn.className = 'copy-code-btn';
-        copyBtn.textContent = '复制';
-        pre.insertBefore(copyBtn, pre.firstChild);
-
-        copyBtn.addEventListener('click', function() {
-            const code = this.nextElementSibling.textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                this.textContent = '已复制';
-                this.classList.add('copied');
-                setTimeout(() => {
-                    this.textContent = '复制';
-                    this.classList.remove('copied');
-                }, 2000);
-            });
-        });
-    });
-
     // 下载按钮下拉菜单（核心修复：确保事件正确绑定）
     const downloadButton = document.getElementById('downloadButton');
     const platformDropdown = document.getElementById('platformDropdown');
