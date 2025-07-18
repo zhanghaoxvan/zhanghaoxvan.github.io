@@ -11,11 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         copyBtn.textContent = '复制';
         pre.insertBefore(copyBtn, pre.firstChild);
 
-        if (!pre.hasAttribute('data-language')) {
-            const langMatch = pre.className.match(/language-(\w+)/);
-            pre.setAttribute('data-language', langMatch ? langMatch[1] : 'text');
-        }
-
         copyBtn.addEventListener('click', function() {
             const code = this.nextElementSibling.textContent;
             navigator.clipboard.writeText(code).then(() => {
